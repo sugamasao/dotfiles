@@ -181,8 +181,13 @@ set hidden
 
 " Tab表示
 set list
-set listchars=tab:>-,trail:<
+set listchars=tab:>.,eol:$,trail:_,extends:\
 
+" タイトルを表示
+set title
+
+" 対応括弧を表示
+set showmatch
 
 " タイトルを表示
 set title
@@ -190,12 +195,8 @@ set title
 " 対応括弧を表示
 set showmatch
 
-
-" タイトルを表示
-set title
-
-" 対応括弧を表示
-set showmatch
+" 行頭・行末間移動を可能に
+set whichwrap=b,s,h,l,<,>,[,]
 
 " matchitスクリプトの読み込み
 source $VIMRUNTIME/macros/matchit.vim
