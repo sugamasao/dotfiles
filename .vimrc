@@ -181,7 +181,7 @@ set hidden
 
 " Tab表示
 set list
-set listchars=tab:>.,eol:$,trail:_,extends:\
+set listchars=tab:>.,eol:↲,trail:_,extends:\
 
 " タイトルを表示
 set title
