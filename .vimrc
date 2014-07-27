@@ -221,6 +221,9 @@ endif
 " YAMLファイル用タブストップ設定
 au FileType yaml setlocal expandtab ts=2 sw=2 fenc=utf-8
 
+" md は markdownだ
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+
 " NERDCommenter
 let NERDSpaceDelims = 1
 
