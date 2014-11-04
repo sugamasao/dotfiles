@@ -3,7 +3,12 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 #plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+if [ -f $ZSH/oh-my-zsh.sh ];then
+  source $ZSH/oh-my-zsh.sh
+else
+  echo 'Not Install oh-my-zsh!!(See https://github.com/robbyrussell/oh-my-zsh)'
+fi
+
 export PATH=$HOME/bin:$PATH
 
 # vim
