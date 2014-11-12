@@ -15,6 +15,7 @@ export PATH=$HOME/bin:$PATH
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim=vi
 EDITOR=vim
+SVN_EDITOR=$EDITOR
 TERM=xterm-256color
 
 if [ -f ~/.zsh/.zshrc.tmux ]; then
