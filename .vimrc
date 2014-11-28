@@ -92,7 +92,7 @@ endif
 
 " Basic Setting {{{
 set bs=indent,eol,start     " allow backspacing over everything in insert mode
-set ai                      " always set autoindenting on
+"set autoindent              " always set autoindenting on
 set smartindent
 set nobackup
 set noundofile
