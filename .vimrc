@@ -93,6 +93,7 @@ endif
 " Basic Setting {{{
 set bs=indent,eol,start     " allow backspacing over everything in insert mode
 set ai                      " always set autoindenting on
+set smartindent
 set nobackup
 set noundofile
 set noswapfile              " No Swap
@@ -112,6 +113,7 @@ set background=dark
 set tabstop=2
 set shiftwidth=2
 set softtabstop=0
+set smarttab
 set expandtab
 
 " 検索設定
@@ -120,6 +122,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set wrapscan
+set showmode
 nmap <Esc><Esc> :nohlsearch<CR><Esc> " Escでハイライト解除
 
 
@@ -182,12 +185,6 @@ set hidden
 " Tab表示
 set list
 set listchars=tab:>.,eol:↲,trail:_,extends:\
-
-" タイトルを表示
-set title
-
-" 対応括弧を表示
-set showmatch
 
 " タイトルを表示
 set title
