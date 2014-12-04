@@ -47,7 +47,7 @@ brew でインストールするツール群
 - ricty
 - zsh
 - tmux
-- openssl(?)
+- openssl
 - mecab
 - mecab-ipadic
 
