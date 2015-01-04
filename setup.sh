@@ -1,7 +1,7 @@
 #!/bin/sh
 
-SETUP_LIST=(.tmux.conf .vimrc .zsh .zshrc)
-CURRENT_DIR=`dirname $0`
+SETUP_LIST=(.peco .tmux.conf .vimrc .zsh .zshrc)
+CURRENT_DIR=$(cd $(dirname $0) && pwd)
 
 for file in ${SETUP_LIST[@]};do
   base=${CURRENT_DIR}/${file}

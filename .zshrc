@@ -26,3 +26,6 @@ if [ -f ~/.zsh/.zshrc.rbenv ]; then
   source ~/.zsh/.zshrc.rbenv
 fi
 
+if [ -f ~/.zsh/.zshrc.peco ]; then
+  source ~/.zsh/.zshrc.peco
+fi
