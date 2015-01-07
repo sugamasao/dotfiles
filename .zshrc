@@ -15,10 +15,10 @@ export PATH=$HOME/bin:$PATH
 # editor
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim=vi
-EDITOR=vim
-SVN_EDITOR=$EDITOR
+export EDITOR=vim
+export SVN_EDITOR=$EDITOR
 
-TERM=xterm-256color
+export TERM=xterm-256color
 
 # ヒストリーで古いものと同じなら古いものを削除
 setopt hist_ignore_all_dups
