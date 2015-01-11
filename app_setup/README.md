@@ -13,7 +13,9 @@ $ brew install brew-cask
 
 ### 事前準備
 
-- Bundlerをインストールしておく（既存環境を汚さないようにするため）
+Bundlerをインストールしておく（既存環境を汚さないようにするため）
+
+OSX 標準のRubyを使う場合は `sudo` をつけて実行する必要があるかもしれない。
 
 ```sh
 $ gem i bundler --no-document
