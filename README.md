@@ -38,18 +38,7 @@ brew 本体のインストールを行う
 
 - http://brew.sh/index_ja.html
 
-brew でインストールするツール群
-
-- git
-- tig
-- imagemagick
-- mysql
-- ricty
-- zsh
-- tmux
-- openssl
-- mecab
-- mecab-ipadic
+brew でインストールするツール群はitamaeで実行する。app_setupディレクトリを参照のこと
 
 ## Ruby
 
