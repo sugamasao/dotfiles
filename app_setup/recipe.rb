@@ -15,7 +15,7 @@
 ).each do |pkg|
   package pkg do
     action :install
-    only_if "brew info #{ pkg } | grep -q 'Not Installed'"
+    only_if "brew info #{ pkg } | grep -qi 'Not installed'"
   end
 end
 
@@ -30,7 +30,7 @@ end
 %w(ricty peco).each do |pkg|
   package pkg do
     action :install
-    only_if "brew info #{ pkg } | grep -q 'Not Installed'"
+    only_if "brew info #{ pkg } | grep -qi 'Not installed'"
   end
 end
 
