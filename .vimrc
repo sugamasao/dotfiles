@@ -78,7 +78,10 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-cucumber'
 NeoBundle 'thinca/vim-quickrun'
-
+NeoBundle 'moro/vim-review'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
 " }}}
 
 syntax enable
@@ -221,11 +224,21 @@ au FileType yaml setlocal expandtab ts=2 sw=2 fenc=utf-8
 " md は markdownだ
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 
-" NERDCommenter
-let NERDSpaceDelims = 1
+" NERDTree
+let g:NERDTreeDirArrows=0
+let g:NERDTreeShowHidden=1
+let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$', '\.sqlite3']
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"autocmd vimenter * NERDTree
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
 
 " HTML
 let g:html_number_lines = 0
 let g:html_use_css = 1
 let g:use_xhtml = 1
 let g:html_use_encoding = 'utf-8'
+
+" vim-fugitive
+autocmd QuickFixCmdPost *grep* cwindow
+set statusline+=%{fugitive#statusline()}
+
