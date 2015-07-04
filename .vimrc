@@ -82,6 +82,7 @@ NeoBundle 'moro/vim-review'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'bronson/vim-trailing-whitespace'
 " }}}
 
 syntax enable
@@ -230,7 +231,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$', '\.sqlite3']
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 "autocmd vimenter * NERDTree
-autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
+"autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
 
 " HTML
 let g:html_number_lines = 0
