@@ -10,6 +10,10 @@ else
   echo 'Not Install oh-my-zsh!!(See https://github.com/robbyrussell/oh-my-zsh)'
 fi
 
+# El Capitan not install /usr/local/bin ?
+if ! `echo $PATH | grep '/usr/local/bin' -q`;then
+  export PATH=/usr/local/bin:$PATH
+fi
 export PATH=$HOME/bin:$PATH
 
 # editor
