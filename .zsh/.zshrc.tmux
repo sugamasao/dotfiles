@@ -11,6 +11,7 @@ if ( ! test $TMUX ) && ( ! expr $TERM : "^screen" > /dev/null ) && which tmux > 
     fi
   else
     echo "Create new tmux session."
+    #tmux set-option -g mouse on
     tmux
   fi
 fi
