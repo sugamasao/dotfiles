@@ -14,7 +14,11 @@ fi
 if ! `echo $PATH | grep '/usr/local/bin' -q`;then
   export PATH=/usr/local/bin:$PATH
 fi
+
+export GOPATH=$HOME
 export PATH=$HOME/bin:$PATH
+
+
 
 # editor
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
