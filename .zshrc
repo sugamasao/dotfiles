@@ -32,6 +32,7 @@ export TERM=xterm-256color
 setopt hist_ignore_all_dups
 
 if [ -f ~/.zsh/.zshrc.tmux ]; then
+  export EVENT_NOKQUEUE=1
   source ~/.zsh/.zshrc.tmux
 fi
 
