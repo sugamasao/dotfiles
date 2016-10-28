@@ -39,6 +39,10 @@ if [ -f ~/.zsh/.zshrc.peco ]; then
   source ~/.zsh/.zshrc.peco
 fi
 
+if [ -f ~/.zsh/.zshrc.syntax-highlighting ]; then
+  source ~/.zsh/.zshrc.syntax-highlighting
+fi
+
 if [ -f ~/google-cloud-sdk ]; then
   # The next line updates PATH for the Google Cloud SDK.
   source ~/google-cloud-sdk/path.zsh.inc
