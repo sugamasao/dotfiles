@@ -146,11 +146,11 @@ function MyTabLine()
     else
       let s .= '%#TabLine#'
     endif
-    let s .= '%' . (i+1) . 'T' 
+    let s .= '%' . (i+1) . 'T'
     let s .= ' ' . (i+1) . (1==getwinvar(i+1,'&modified')?'[+]':'') . ' %{MyTabLabel(' . (i+1) . ')} '
   endfor
   let s .= '%#TabLineFill#%T'
-  if tabpagenr('$') > 1 
+  if tabpagenr('$') > 1
     let s .= '%=%#TabLine#%999Xclose'
   endif
   return s
@@ -159,7 +159,7 @@ endfunction
 function MyTabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1]) 
+  return bufname(buflist[winnr - 1])
 endfunction
 
 
@@ -174,7 +174,7 @@ au BufRead,BufNewFile * match JpSpace /　/
 " ステータスライン表示
 set laststatus=2
 set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&filetype.']'}%=%l,%c%V%8P
-"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%{exists('*SkkGetModeStr')?SkkGetModeStr():''}%=%l/%L,%c%V%8P\ 
+"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%{exists('*SkkGetModeStr')?SkkGetModeStr():''}%=%l/%L,%c%V%8P\
 set noshowmode
 set wildmenu
 set cmdheight=2
@@ -242,4 +242,3 @@ let g:html_use_encoding = 'utf-8'
 " vim-fugitive
 autocmd QuickFixCmdPost *grep* cwindow
 set statusline+=%{fugitive#statusline()}
-
