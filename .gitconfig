@@ -1,0 +1,64 @@
+[include]
+	path = ~/.git/gitconfig.local
+	path = ~/.git/gitconfig.sourcetree
+
+[color]
+	diff = auto
+	branch = auto
+	status = auto
+	interactive = auto
+	ui = true
+
+[color "branch"]
+	current = red
+	local = yellow
+	remote = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+
+[color "diff"]
+	commit = black white bold
+	meta = yellow
+	frag = black
+#	old = red strike
+#	new = green italic
+
+[i18n]
+	commitencoding = utf-8
+
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes_global
+	pager = iconv -t UTF-8 | LESSCHARSET=utf-8 less
+
+[pager]
+  log  = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
+[credential]
+  helper = osxkeychain
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+# force using git:// to https://
+[url "https://"]
+	insteadOf = git://
+[diff]
+  algorithm = patience
+	compactionHeuristic = true
+
+[ghq]
+  root = ~/src
+
+[alias]
+  gv = "!f(){ git grep -n $* | peco | awk -F: '{print $1}' | xargs -I% bash -c 'vim "%" <&- <&2'; };f"
+
