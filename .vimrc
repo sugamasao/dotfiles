@@ -222,6 +222,9 @@ endif
 " YAMLファイル用タブストップ設定
 au FileType yaml setlocal expandtab ts=2 sw=2 fenc=utf-8
 
+" ASファイル用タブストップ設定
+au BufNewFile,BufRead *.as set filetype=actionscript
+
 " md は markdownだ
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 
