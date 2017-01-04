@@ -4,6 +4,7 @@
   git
   tig
   hub
+  ghq
   imagemagick
   mysql
   zsh
@@ -33,4 +34,3 @@ end
     only_if "brew info #{ pkg } | grep -qi 'Not installed'"
   end
 end
-
