@@ -1,0 +1,22 @@
+#!/bin/sh
+REMOTE='origin'
+PULL=1
+
+if [ $# -eq 1 ]; then
+  expr ${1} + 1 > /dev/null 2>&1
+  RET=$?
+  if [ ${RET} -eq 2 ]; then
+    echo "`basename ${0}` [remote] pr-number"
+    exit 1
+  fi
+  PULL=${1}
+elif [ $# -eq 2 ]; then
+  REMOTE=${1}
+  PULL=${2}
+else
+  echo "`basename ${0}` [remote] pr-number"
+  exit 1
+fi
+
+git fetch ${REMOTE} pull/${PULL}/head:pr-${PULL}
+

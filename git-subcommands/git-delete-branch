@@ -1,0 +1,19 @@
+#!/bin/sh
+
+COMMAND="git branch --merged | egrep -v 'master|develop|\*'"
+
+if [ ${#} -eq '1' ] && [ ${1} = '--dry-run' ]; then
+  echo 'show merged branch(--dry-run).'
+  sh -c "${COMMAND} | xargs -I % echo %"
+else
+  echo 'show merged branch.'
+  sh -c "${COMMAND} | xargs -I % echo %"
+  echo 'delete? [Y/n] '
+  read ANSWER
+
+  case $ANSWER in
+      Y* ) sh -c "${COMMAND} | xargs -I % git branch -d %";;
+      *  ) echo "not delete.";exit 1;;
+  esac
+fi
+
