@@ -56,4 +56,6 @@ if [ -f ~/google-cloud-sdk ]; then
   source ~/google-cloud-sdk/completion.zsh.inc
 fi
 
-#code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+if [ -d ~/.nodebrew ]; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi

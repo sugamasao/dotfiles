@@ -1,0 +1,8 @@
+#!/bin/sh
+if ! /usr/bin/which -s convert; then
+  echo 'not installed imagemagick(use convert command).'
+  exit 1
+fi
+DIFF_PATH=/tmp/git_imgdiff_`date "+%Y%m%d_%H%M%S"`.png
+compare $2 $1 png:- | montage -geometry +4+4 $2 png:- $1 $DIFF_PATH
+open $DIFF_PATH

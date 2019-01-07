@@ -1,98 +1,17 @@
-" 文字コード, 改行コード {{{
-set encoding=utf-8
-set fileencodings=ucs_bom,utf8,ucs-2le,ucs-2
-set fileformats=unix,dos,mac
-
-" from ずんWiki http://www.kawaz.jp/pukiwiki/?vim#content_1_7
-" 文字コードの自動認識
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
-endif
-if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  " iconvがeucJP-msに対応しているかをチェック
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  " fileencodingsを構築
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = s:fileencodings_default .','. &fileencodings
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
-    endif
-  endif
-  " 定数を処分
-  unlet s:enc_euc
-  unlet s:enc_jis
-endif
-" }}}
-
-
-" $ mkdir -p ~/.vim/bundle
-" $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+if filereadable(expand('~/.vim/dein.setup.vim'))
+  source ~/.vim/dein.setup.vim
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+if filereadable(expand('~/.vim/nerd_tree.setup.vim'))
+  source ~/.vim/nerd_tree.setup.vim
+endif
 
-
-
-" NeoBundle {{{
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-  \     'windows' : 'make -f make_mingw32.mak',
-  \     'cygwin' : 'make -f make_cygwin.mak',
-  \     'mac' : 'make -f make_mac.mak',
-  \     'unix' : 'make -f make_unix.mak',
-  \    },
-  \ }
-
-" colorschemes
-NeoBundle 'altercation/vim-colors-solarized'
-
-" Bundle List
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-cucumber'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'moro/vim-review'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'bronson/vim-trailing-whitespace'
-" }}}
+if filereadable(expand('~/.vim/vim_fugitive.setup.vim'))
+  source ~/.vim/vim_fugitive.setup.vim
+endif
 
 syntax enable
 filetype plugin indent on
-
-NeoBundleCheck
-
-if filereadable(expand('~/.vimrc.local'))
-  execute 'source' expand('~/.vimrc.local')
-endif
 
 " Basic Setting {{{
 set bs=indent,eol,start     " allow backspacing over everything in insert mode
@@ -218,30 +137,3 @@ if stridx($TERM, "xterm-256color") >= 0
 else
   set t_Co=16
 endif
-
-" YAMLファイル用タブストップ設定
-au FileType yaml setlocal expandtab ts=2 sw=2 fenc=utf-8
-
-" ASファイル用タブストップ設定
-au BufNewFile,BufRead *.as set filetype=actionscript
-
-" md は markdownだ
-autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-
-" NERDTree
-let g:NERDTreeDirArrows=0
-let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore=['\.clean$', '\.swp$', '\.bak$', '\~$', '\.sqlite3']
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-"autocmd vimenter * NERDTree
-"autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
-
-" HTML
-let g:html_number_lines = 0
-let g:html_use_css = 1
-let g:use_xhtml = 1
-let g:html_use_encoding = 'utf-8'
-
-" vim-fugitive
-autocmd QuickFixCmdPost *grep* cwindow
-set statusline+=%{fugitive#statusline()}

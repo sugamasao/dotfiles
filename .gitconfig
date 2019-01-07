@@ -1,6 +1,5 @@
 [include]
 	path = ~/.git/gitconfig.local
-	path = ~/.git/gitconfig.sourcetree
 
 [color]
 	diff = auto
@@ -33,7 +32,7 @@
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	excludesfile = ~/.gitignore_global
-	attributesfile = ~/.gitattributes_global
+	attributesfile = ~/.gitattributes
 	pager = iconv -t UTF-8 | LESSCHARSET=utf-8 less
 
 [pager]
@@ -53,7 +52,7 @@
 [url "https://"]
 	insteadOf = git://
 [diff]
-  algorithm = patience
+  #algorithm = patience
 	compactionHeuristic = true
 
 [ghq]
@@ -61,4 +60,12 @@
 
 [alias]
   gv = "!f(){ git grep -n $* | peco | awk -F: '{print $1}' | xargs -I% bash -c 'vim "%" <&- <&2'; };f"
-
+  br = for-each-ref --sort=-authordate  --format='%(HEAD) %(authordate:short) %(color:yellow)[%(refname:short)]%(color:reset) %(subject)' refs/heads
+  showpr = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
+  cancel = reset --soft HEAD^
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[diff "image"]
+	command = ~/bin/git-imgdiff
