@@ -17,7 +17,7 @@ function symlik_file() {
 ###############
 ## ~/
 ###############
-SETUP_LIST=(.peco .tmux.conf .vimrc .vim .zsh .zshrc .gemrc .git .gitconfig .gitignore .gitattributes)
+SETUP_LIST=(.peco .tmux.conf .vimrc .vim .zsh .zshrc .gemrc .gitconfig .gitignore .gitattributes)
 CURRENT_DIR=$(cd $(dirname $0) && pwd)
 
 for file in ${SETUP_LIST[@]};do
