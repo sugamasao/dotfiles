@@ -21,7 +21,7 @@ export PATH=$HOME/bin:$PATH
 
 
 # editor
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim=vi
 export EDITOR=vim
 export SVN_EDITOR=$EDITOR
