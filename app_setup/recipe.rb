@@ -13,6 +13,7 @@
   mecab-ipadic
   tree
   poppler
+  peco
 ).each do |pkg|
   package pkg do
     action :install
@@ -21,14 +22,14 @@
 end
 
 ## using tap repository
-%w(sanemat/font peco/peco).each do |tap_name|
+%w(sanemat/font).each do |tap_name|
   execute "using tap #{ tap_name }" do
     command "brew tap #{ tap_name }"
     not_if "brew tap | grep -q '#{ tap_name }'"
   end
 end
 
-%w(ricty peco).each do |pkg|
+%w(ricty).each do |pkg|
   package pkg do
     action :install
     only_if "brew info #{ pkg } | grep -qi 'Not installed'"
