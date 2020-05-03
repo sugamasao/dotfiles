@@ -18,8 +18,6 @@ fi
 export GOPATH=$HOME
 export PATH=$HOME/bin:$PATH
 
-
-
 # editor
 #alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim=vi
@@ -30,6 +28,10 @@ export TERM=xterm-256color
 
 # ヒストリーで古いものと同じなら古いものを削除
 setopt hist_ignore_all_dups
+
+if [ -d ~/.nodebrew ]; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
 
 if [ -f ~/.zsh/.zshrc.tmux ]; then
   export EVENT_NOKQUEUE=1
