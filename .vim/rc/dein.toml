@@ -1,0 +1,18 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+# hook_add = 'source ~/.config/nvim/userautoload/plugins/plugins-vim-fugitive.vim'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
