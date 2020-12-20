@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 if filereadable(expand('~/.vim/dein.setup.vim'))
   source ~/.vim/dein.setup.vim
 endif
@@ -8,6 +11,17 @@ endif
 
 if filereadable(expand('~/.vim/vim_fugitive.setup.vim'))
   source ~/.vim/vim_fugitive.setup.vim
+endif
+
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
 endif
 
 syntax enable
@@ -21,16 +35,16 @@ set nobackup
 set noundofile
 set noswapfile              " No Swap
 set viminfo=%,'100,<500,h
-set history=100             " keep 100 lines of command line history
+set history=5000            " keep 5000 lines of command line history
 set ruler                   " show the cursor position all the time
-set nu                      " show line number
+set number                  " show line number
 set ambiwidth=double
 set display=uhex            " 表示できない文字を16進数で表示
 set scrolloff=5             " 常にカーソル位置から5行余裕を取る
 set virtualedit=block       " 矩形選択でカーソル位置の制限を解除
 set autoread                " 他でファイルが編集された時に自動で読み込む
 set background=dark
-
+set cursorline
 
 " タブストップ設定
 set tabstop=2
@@ -89,11 +103,6 @@ match tabs /\t/
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNewFile * match JpSpace /　/
 
-
-" ステータスライン表示
-set laststatus=2
-set statusline=%<%f\%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&filetype.']'}%=%l,%c%V%8P
-"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}%{fugitive#statusline()}%{SyntasticStatuslineFlag()}%{exists('*SkkGetModeStr')?SkkGetModeStr():''}%=%l/%L,%c%V%8P\
 set noshowmode
 set wildmenu
 set cmdheight=2
@@ -114,6 +123,7 @@ set title
 
 " 対応括弧を表示
 set showmatch
+source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 
 " 行頭・行末間移動を可能に
 set whichwrap=b,s,h,l,<,>,[,]
