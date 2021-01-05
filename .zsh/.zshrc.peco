@@ -22,9 +22,21 @@ function peco-src () {
   zle clear-screen
 }
 
+# https://fromatom.hatenablog.com/entry/2020/03/31/135410
+function peco-checkout-pull-request () {
+    local selected_pr_id=$(gh pr list --limit 100 | peco | awk '{ print $1 }')
+    if [ -n "$selected_pr_id" ]; then
+        BUFFER="gh pr checkout ${selected_pr_id}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
 zle -N peco-src
 bindkey '^]' peco-src
 
+zle -N peco-checkout-pull-request
+bindkey "^g^p" peco-checkout-pull-request
