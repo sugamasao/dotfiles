@@ -21,9 +21,6 @@ repo = 'altercation/vim-colors-solarized'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
