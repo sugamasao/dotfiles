@@ -1,45 +1,45 @@
 [include]
   path = ~/.git/gitconfig.local
-
 [color]
   diff = auto
   branch = auto
   status = auto
   interactive = auto
   ui = true
-
 [color "branch"]
   current = red
   local = yellow
   remote = green
-
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
-
-
 [color "diff"]
   commit = black white bold
   meta = yellow
   frag = black
-#  old = red strike
-#  new = green italic
-
 [i18n]
   commitencoding = utf-8
-
 [core]
   editor = vim -c \"set fenc=utf-8\"
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
   pager = iconv -t UTF-8 | LESSCHARSET=utf-8 less
-
 [pager]
-  log  = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
-
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[delta]
+  features = decorations
+[delta "interactive"]
+  keep-plus-minus-markers = false
+[delta "decorations"]
+  line-numbers = true
+  navigate = true
+  syntax-theme = Monokai Extended
 [credential]
   helper = osxkeychain
 [user]
@@ -61,10 +61,9 @@
 [diff]
   #algorithm = patience
   compactionHeuristic = true
-
+  colorMoved = default
 [ghq]
   root = ~/src
-
 [alias]
   gv = "!f(){ git grep -n $* | peco | awk -F: '{print $1}' | xargs -I% bash -c 'vim "%" <&- <&2'; };f"
   br = for-each-ref --sort=-authordate  --format='%(HEAD) %(authordate:short) %(color:yellow)[%(refname:short)]%(color:reset) %(subject)' refs/heads

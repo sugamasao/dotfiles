@@ -14,6 +14,7 @@
   tree
   poppler
   peco
+  git-delta
 ).each do |pkg|
   package pkg do
     action :install
