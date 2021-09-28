@@ -15,6 +15,7 @@
   poppler
   peco
   git-delta
+  bat
 ).each do |pkg|
   package pkg do
     action :install
