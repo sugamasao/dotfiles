@@ -16,6 +16,7 @@
   peco
   git-delta
   bat
+  exa
 ).each do |pkg|
   package pkg do
     action :install
