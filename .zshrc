@@ -26,6 +26,11 @@ export SVN_EDITOR=$EDITOR
 
 export TERM=xterm-256color
 
+# alias alt commands(use original command by "\". eg: \ls)
+alias ls='exa -lgh --git'
+alias cat=bat
+alias diff=delta
+
 # ヒストリーで古いものと同じなら古いものを削除
 setopt hist_ignore_all_dups
 
@@ -61,3 +66,4 @@ fi
 if [ -d ~/.nodebrew ]; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
+
