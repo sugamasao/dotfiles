@@ -34,10 +34,6 @@ alias diff=delta
 # ヒストリーで古いものと同じなら古いものを削除
 setopt hist_ignore_all_dups
 
-if [ -d ~/.nodebrew ]; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-fi
-
 if [ -f ~/.zsh/.zshrc.tmux ]; then
   export EVENT_NOKQUEUE=1
   source ~/.zsh/.zshrc.tmux
@@ -45,6 +41,10 @@ fi
 
 if [ -f ~/.zsh/.zshrc.rbenv ]; then
   source ~/.zsh/.zshrc.rbenv
+fi
+
+if [ -f ~/.zsh/.zshrc.nodenv ]; then
+  source ~/.zsh/.zshrc.nodenv
 fi
 
 if [ -f ~/.zsh/.zshrc.peco ]; then
@@ -61,9 +61,5 @@ if [ -f ~/google-cloud-sdk ]; then
 
   # The next line enables shell command completion for gcloud.
   source ~/google-cloud-sdk/completion.zsh.inc
-fi
-
-if [ -d ~/.nodebrew ]; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
 
