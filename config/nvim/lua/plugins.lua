@@ -1,5 +1,12 @@
 vim.cmd [[packadd packer.nvim]]
 
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -19,6 +26,14 @@ return require('packer').startup(function(use)
       { 'lambdalisue/fern-git-status.vim', opt = false },
       { 'lambdalisue/nerdfont.vim', opt = false },
       { 'lambdalisue/fern-renderer-nerdfont.vim', opt = false }
+    }
+  }
+  use 'folke/tokyonight.nvim'
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-treesitter/nvim-treesitter' }
     }
   }
 end)
