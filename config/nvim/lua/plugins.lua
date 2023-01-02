@@ -14,7 +14,7 @@ return require('packer').startup(function(use)
   use 'neoclide/coc.nvim'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 
+    requires = {
       { 'kyazdani42/nvim-web-devicons', opt = false },
       { 'RRethy/nvim-base16', opt = false }
     }
@@ -35,5 +35,8 @@ return require('packer').startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-treesitter/nvim-treesitter' }
     }
+  }
+  use {
+    'akinsho/bufferline.nvim', tag = 'v3.*'
   }
 end)
