@@ -30,9 +30,23 @@ done
 ## ~/bin
 ###############
 mkdir -p ~/bin
-for subcommand in `ls ${CURRENT_DIR}/git-subcommands/*`;do
+for subcommand in `ls ${current_dir}/git-subcommands/*`;do
   file=$(basename ${subcommand})
   base=${subcommand}
-  target=${HOME}/bin/${file}
+  target=${home}/bin/${file}
   symlik_file ${base} ${target}
 done
+
+###############
+## ~/.config
+###############
+mkdir -p ~/.config
+SETUP_LIST=(nvim)
+CURRENT_DIR=$(cd $(dirname $0) && pwd)
+
+for dir in ${SETUP_LIST[@]};do
+  base=${CURRENT_DIR}/config/${dir}
+  target=${HOME}/.config/${dir}
+  symlik_file ${base} ${target}
+done
+
