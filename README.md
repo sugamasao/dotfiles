@@ -3,35 +3,25 @@
 ## AppStore
 
 - Xcode
-- Alfred
-- Twitter
 - Keynote
-- Marked
-- The Unarchiver
 - Skitch
-
+- CotEditor
+- Kindle
 
 ## 野良インストール
 
-- MacVim
-  - https://github.com/splhack/macvim/releases/tag/20140805
+- VSCode
+  - https://azure.microsoft.com/ja-jp/products/visual-studio-code/
 - Google Chrome
   - https://www.google.co.jp/chrome/
-- Coteditor
-  - http://coteditor.com/
-- atom
-  - https://atom.io/
 - iTerm2
   - http://iterm2.com/
 - Dropbox
   - https://www.dropbox.com/ja/
-- github.app
-  - https://mac.github.com/
-- Omni Outliner
-  - https://www.omnigroup.com/omnioutliner
-- Omni Graffle
-  - https://www.omnigroup.com/omnigraffle
-
+- Docker Desktop
+  - https://www.docker.com/products/docker-desktop/
+- RubyMine
+  - https://www.jetbrains.com/ja-jp/ruby/
 ## brew
 
 brew 本体のインストールを行う
@@ -48,11 +38,20 @@ rbenvを使用する。以下のツール群を **git** でインストールす
 - https://github.com/sstephenson/ruby-build
 - https://github.com/rkh/rbenv-update
 
+## Node
+
+nodenvを使用する。以下のツール群を **git** でインストールする（brewではない）。
+
+- https://github.com/nodenv/nodenv
+- https://github.com/nodenv/node-build
+- https://github.com/nodenv/nodenv-update
+
 ## このリポジトリのファイルを有効にするには
 
 ```sh
 $ git clone https://github.com/sugamasao/dotfiles ~/dotfiles
 $ cd dotfiles
+$ sh install_brew_package.sh
 $ sh setup.sh
 ```
 
