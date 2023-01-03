@@ -5,12 +5,16 @@ function symlik_file() {
   target=${2}
 
   if [ -L ${target} ]; then
-    echo "${file} is already symlink. (not create symlink)"
+    echo "😌 ${target} is already symlink. (not create symlink)"
   elif [ -e ${target} ]; then
-    echo "${file} already exists. (not create symlink)"
+    echo "🤔 ${target} already exists. (not create symlink)"
   else
     ln -s ${base} ${target}
-    echo "create symlink 'ln -s ${base} ${target}'"
+    if [ $? -eq 0  ]; then
+      echo "🙆 create symlink 'ln -s ${base} ${target}'"
+    else
+      echo "❌ failed 'ln -s ${base} ${target}'"
+    fi
   fi
 }
 
@@ -30,10 +34,11 @@ done
 ## ~/bin
 ###############
 mkdir -p ~/bin
-for subcommand in `ls ${current_dir}/git-subcommands/*`;do
+CURRENT_DIR=$(cd $(dirname $0) && pwd)
+for subcommand in `ls ${CURRENT_DIR}/git-subcommands/*`;do
   file=$(basename ${subcommand})
   base=${subcommand}
-  target=${home}/bin/${file}
+  target=${HOME}/bin/${file}
   symlik_file ${base} ${target}
 done
 
@@ -41,7 +46,7 @@ done
 ## ~/.config
 ###############
 mkdir -p ~/.config
-SETUP_LIST=(nvim)
+SETUP_LIST=(nvim bat)
 CURRENT_DIR=$(cd $(dirname $0) && pwd)
 
 for dir in ${SETUP_LIST[@]};do
